@@ -1,15 +1,11 @@
 let riwayatPenyakit = [
     {
-      "question_id": "smoking",
+      "question_id": "smoke",
       "question_text": "Are you an active smoker?"
     },
     {
-      "question_id": "high_cholesterol",
-      "question_text": "Have you ever get diagnosed to have high cholesterol level?"
-    },
-    {
-      "question_id": "diabetes",
-      "question_text": "Have you ever get diagnosed to have diabetes?"
+      "question_id": "active",
+      "question_text": "are you physically active?"
     },
     {
       "question_id": "blood_clotting_disorder",

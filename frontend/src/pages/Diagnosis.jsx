@@ -1,63 +1,67 @@
 import React, {useState} from 'react'
 import loginImg from '../assets/Login.jpg'
-import {link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import RiwayatList from '../assets/riwayat_penyakit'
 
-const initialState = {
-    username: "",
-    age:null,
-    gender:null,
-    height:null,
-    weight:null,
-    ap_hi:null,
-    ap_lo:null,
-    cholesterol:null,
-    gluc:null,
-    smoke:null,
-    alco:null,
-    active:null,
-    racial_identity:null,
-    blood_clotting_disorder:null,
-    kidney_disease:null,
-    chest_pains:null,
-    breathlessness:null,
-    nausea:null,
-    faintings:null,
-    fatigue:null,
-    swollen_ankles:null,
-    drastic_weight_changes:null, 
-    bloating:null,
-    loss_of_appetite:null,
-    dizziness_confusion:null,
-    palpitations:null,
-    atrial_fibrillation:null,
-    sudden_headache:null,
-    sudden_lossofvision:null,
-    face_dropping:null,
-    numbness:null,
-    speech_problem:null,
-    leg_pain_cramping:null,
-    burning_aching_toes:null,
-    cool_feet_skin:null,
-    redness_colorchanges_skin:null,
-    back_pain:null,
-    coughing:null,
-    hoarseness:null,
-    tenderness_pain_chest:null,
-    sharp_sudden_pain_upperback:null,
-    pain_chest_jaw_neck_arms:null,
-    loss_of_consciousness:null,
-    difficulty_breathing:null,
-    trouble_swallowing_food:null,
-    deep_constant_belly_pain:null,
-    family_history_coronaryheartdisease:null,
-    personal_family_history_blood_bloodvesseldisease:null
-}
+import { useStateContext } from '../contexts/ContextProvider'
+
 
 export default function Diagnose() {
+    const initialState = {
+        age:20,
+        gender:2,
+        height:175,
+        weight:90,
+        ap_hi:120,
+        ap_lo:90,
+        cholesterol:1,
+        gluc:1,
+        smoke:0,
+        alco:0,
+        active:0,
+        racial_identity:"caucasian",
+        blood_clotting_disorder:0,
+        kidney_disease:0,
+        chest_pains:0,
+        breathlessness:0,
+        nausea:0,
+        faintings:0,
+        fatigue:0,
+        swollen_ankles:0,
+        drastic_weight_changes:0, 
+        bloating:0,
+        loss_of_appetite:0,
+        dizziness_confusion:0,
+        palpitations:0,
+        atrial_fibrillation:0,
+        sudden_headache:0,
+        sudden_lossofvision:0,
+        face_dropping:0,
+        numbness:0,
+        speech_problem:0,
+        leg_pain_cramping:0,
+        burning_aching_toes:0,
+        cool_feet_skin:0,
+        redness_colorchanges_skin:0,
+        back_pain:0,
+        coughing:0,
+        hoarseness:0,
+        tenderness_pain_chest:0,
+        sharp_sudden_pain_upperback:0,
+        pain_chest_jaw_neck_arms:0,
+        loss_of_consciousness:0,
+        difficulty_breathing:0,
+        trouble_swallowing_food:0,
+        deep_constant_belly_pain:0,
+        family_history_coronaryheartdisease:0,
+        personal_family_history_blood_bloodvesseldisease:0
+    }    
+
+    const {upData, setData} = useStateContext();
+
+    let response_temp = null;
     const [formData, setFormData] = useState(initialState);
     const {
-        username,
         age,
         gender,
         height,
@@ -109,9 +113,85 @@ export default function Diagnose() {
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
-        setFormData({...formData, [name] : value})
+        setFormData({...formData, [name] : value});
+        console.log(formData);
     }
 
+    const callDiagnosisAPI = (formData) => {
+        var inputJSON = {
+            "age":formData.age,
+            "gender":formData.gender,
+            "height":formData.height,
+            "weight":formData.weight,
+            "ap_hi":formData.ap_hi,
+            "ap_lo":formData.ap_lo,
+            "cholesterol":formData.cholesterol,
+            "gluc":formData.gluc,
+            "smoke":formData.smoke,
+            "alco":formData.alco,
+            "active":formData.active,
+            "racial_identity":formData.racial_identity,
+            "blood_clotting_disorder":formData.blood_clotting_disorder,
+            "kidney_disease":formData.kidney_disease,
+            "chest_pains":formData.chest_pains,
+            "breathlessness":formData.breathlessness,
+            "nausea":formData.nausea,
+            "faintings":formData.faintings,
+            "fatigue":formData.fatigue,
+            "swollen_ankles":formData.swollen_ankles,
+            "drastic_weight_changes":formData.drastic_weight_changes, 
+            "bloating":formData.bloating,
+            "loss_of_appetite":formData.loss_of_appetite,
+            "dizziness_confusion":formData.dizziness_confusion,
+            "palpitations":formData.palpitations,
+            "atrial_fibrillation":formData.atrial_fibrillation,
+            "sudden_headache":formData.sudden_headache,
+            "sudden_lossofvision":formData.sudden_lossofvision,
+            "face_dropping":formData.face_dropping,
+            "numbness":formData.numbness,
+            "speech_problem":formData.speech_problem,
+            "leg_pain_cramping":formData.leg_pain_cramping,
+            "burning_aching_toes":formData.burning_aching_toes,
+            "cool_feet_skin":formData.cool_feet_skin,
+            "redness_colorchanges_skin":formData.redness_colorchanges_skin,
+            "back_pain":formData.back_pain,
+            "coughing":formData.coughing,
+            "hoarseness":formData.hoarseness,
+            "tenderness_pain_chest":formData.tenderness_pain_chest,
+            "sharp_sudden_pain_upperback":formData.sharp_sudden_pain_upperback,
+            "pain_chest_jaw_neck_arms":formData.pain_chest_jaw_neck_arms,
+            "loss_of_consciousness":formData.loss_of_consciousness,
+            "difficulty_breathing":formData.difficulty_breathing,
+            "trouble_swallowing_food":formData.trouble_swallowing_food,
+            "deep_constant_belly_pain":formData.deep_constant_belly_pain,
+            "family_history_coronaryheartdisease":formData.family_history_coronaryheartdisease,
+            "personal_family_history_blood_bloodvesseldisease":formData.personal_family_history_blood_bloodvesseldisease
+            }
+        // https://cvd-diagnosis-api.herokuapp.com/diagnose/
+        fetch("http://127.0.0.1:8000/diagnose/", {
+        headers:{
+          'Access-Control-Allow-Origin': '*',
+        },
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputJSON),
+      })
+      .then((response) => {
+        response.json();
+        console.log(response);
+    })
+      .then((data) => {
+        response_temp = JSON.stringify(data);
+        document.getElementById('result').innerHTML = JSON.stringify(data);
+        setData(data);
+        console.log('Success:', upData);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
     console.log(RiwayatList)
   return (
     <div className='relative w-full'>
@@ -122,18 +202,6 @@ export default function Diagnose() {
         <form className='max-w-[400px] w-full mx-auto rounded-lg bg-white p-8'>
             <h2 className='text-4xl font-bold text-center py-3'>Selamat Datang</h2>
             <h3 className='text-center pb-8'>Isi form untuk mendapatkan diagnosis</h3>
-            
-            <div className='flex flex-col'>
-                <label>Name</label>
-                <input 
-                type = "text"
-                required
-                name = "username"
-                value = {username}
-                onChange = {handleInputChange}
-                className='placeholder:text-gray-400 border relative rounded bg-gray-100 p-3' placeholder='Masukkan nama anda'
-                />
-            </div>
 
             <div className='flex flex-col '>
                 <label>Gender</label>
@@ -347,7 +415,7 @@ export default function Diagnose() {
                 type = "radio"
                 required
                 name = {element.question_id}
-                value = {true}
+                value = {1}
                 onChange = {handleInputChange}
                 className='placeholder:text-gray-400 border relative rounded bg-gray-100'
                 />
@@ -359,7 +427,7 @@ export default function Diagnose() {
                 type = "radio"
                 required
                 name = {element.question_id}
-                value = {false}
+                value = {0}
                 onChange = {handleInputChange}
                 className='placeholder:text-gray-400 border relative rounded bg-gray-100'
                 />
@@ -368,8 +436,10 @@ export default function Diagnose() {
             </div>
                 )
             })}
-
-            <button className='font-semibold w-full py-3 mt-8 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>Diagnose</button>
+            {/* make button call api -> then send the user to result page */}
+            <Link to={"/Result"} >
+                <button onClick={callDiagnosisAPI(formData)} className='font-semibold w-full py-3 mt-8 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>Diagnose</button>
+            </Link>
         </form>
     </div>
     </div>

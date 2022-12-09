@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
 import loginImg from '../assets/Login.jpg'
 import {Link, useNavigate} from 'react-router-dom'
-const initialState ={
-    number_of_positive: 0,
-    number_of_total: 4,
-    coronary_heart_disease: null,
-    stroke: null,
-    peripheral_arterial_disease: null,
-    thoracic_aortic_aneurysm: null,
-    abdominal_aortic_aneurysm: null
-};
+
+import { useStateContext } from '../contexts/ContextProvider';
+
 
 export default function Result() {
+    const initialState ={
+        number_of_positive: 0,
+        number_of_total: 4,
+        coronary_heart_disease: 0.1,
+        stroke: 0.1,
+        peripheral_arterial_disease: null,
+        thoracic_aortic_aneurysm: null,
+        abdominal_aortic_aneurysm: null
+    };
   var riskResult = initialState.number_of_positive>0?"You are at risk of having any Cardiovascular Disease":"You are not at risk of having any Cardiovascular Disease."
   var riskResultExplanation = initialState.number_of_positive + " out of " + initialState.number_of_total + " of our models determine that you are at risk of having any Cardiovascular Disease."    
   var CHDResult = initialState.coronary_heart_disease>0?"Our expert system determines that you may have Coronary Heart Disease with "+initialState.coronary_heart_disease +" confidence.":"you are not at risk of having Coronary Heart Disease"
