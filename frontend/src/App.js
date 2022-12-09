@@ -7,7 +7,7 @@ import Result from './pages/Result'
 function App() {
   return (
     
-      <Result/>
+      <Diagnosis/>
     
   );
 }

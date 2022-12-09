@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import loginImg from '../assets/Login.jpg'
 import {link, useNavigate} from 'react-router-dom'
+import RiwayatList from '../assets/riwayat_penyakit'
 
 const initialState = {
     username: "",
@@ -110,12 +111,14 @@ export default function Diagnose() {
         const {name, value} = e.target;
         setFormData({...formData, [name] : value})
     }
+
+    console.log(RiwayatList)
   return (
-    <div className='relative w-full h-screen'>
+    <div className='relative w-full'>
         <img className='absolute w-full h-full object-cover mix-blend-overlay' src={loginImg} alt="/" />
     
 
-    <div className='pt-10 justify-center items-center h-full'>
+    <div className='py-10 justify-center items-center h-full'>
         <form className='max-w-[400px] w-full mx-auto rounded-lg bg-white p-8'>
             <h2 className='text-4xl font-bold text-center py-3'>Selamat Datang</h2>
             <h3 className='text-center pb-8'>Isi form untuk mendapatkan diagnosis</h3>
@@ -333,6 +336,38 @@ export default function Diagnose() {
                 </div>
 
             </div>
+
+            {RiwayatList.map((element)=>{
+                return(
+                    <div className='flex flex-col '>
+                <label>{element.question_text}</label>
+
+                <div class="flex items-center pl-4 rounded border border-gray-100 dark:border-gray-100 my-1">
+                <input 
+                type = "radio"
+                required
+                name = {element.question_id}
+                value = {true}
+                onChange = {handleInputChange}
+                className='placeholder:text-gray-400 border relative rounded bg-gray-100'
+                />
+                <label className='ml-2'>Yes</label>
+                </div>
+
+                <div class="flex items-center pl-4 rounded border border-gray-100 dark:border-gray-100">
+                <input 
+                type = "radio"
+                required
+                name = {element.question_id}
+                value = {false}
+                onChange = {handleInputChange}
+                className='placeholder:text-gray-400 border relative rounded bg-gray-100'
+                />
+                <label className='ml-2'>No</label>
+                </div>
+            </div>
+                )
+            })}
 
             <button className='font-semibold w-full py-3 mt-8 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>Diagnose</button>
         </form>
