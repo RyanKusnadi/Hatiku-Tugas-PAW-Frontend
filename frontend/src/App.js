@@ -12,9 +12,14 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-      <Router>
+    <Router>
       <Routes>
         <Route path="/" caseSensitive={false} element={<Diagnosis/>}/>
+        <Route path='/admin/*' element={<Admin/>} />
+        <Route path='/login' element={<LoginPage/>} />        
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/404'  element={<Error404/>} />
+        <Route path="/*" element={<Navigate to={'/404'}/>}/>
         {/* <Route path="*" caseSensitive={false} element={<NotFound/>}/> */}
         <Route path="/Result" caseSensitive={false} element={<Result/>}/>
         <Route path="/Result/AbdominalAorticAneurysm" caseSensitive={false} element={<AAADisease/>}/>
