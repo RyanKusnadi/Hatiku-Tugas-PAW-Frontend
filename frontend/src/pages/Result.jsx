@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import loginImg from '../assets/Login.jpg'
-import {link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 const initialState ={
     number_of_positive: 0,
     number_of_total: 4,
@@ -41,28 +41,43 @@ export default function Result() {
             <div className='flex flex-col mb-4'>
                 <div class="justify-between flex items-center border relative rounded bg-gray-300 p-3'">
                     <label className='relative rounded bg-gray-300 p-3'>{CHDResult}</label>
-                    <button className='mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    <Link to={"CoronaryHeartDisease"} >
+                    <button className='p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    </Link>
+                    
                 </div>
                 
                 <div class="justify-between flex items-center border relative rounded bg-gray-300 p-3'">
                 <label className='relative rounded bg-gray-300 p-3'>{StrokeResult}</label>
-                    <button className='mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    <Link to={"Stroke"} >       
+                    <button className='p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    </Link>
                 </div>
 
                 <div class="justify-between flex items-center border relative rounded bg-gray-300 p-3'">
                 <label className='relative rounded bg-gray-300 p-3'>{PADResult}</label>
-                    <button className='mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    <Link to={"PeripheralArterialDisease"} >
+                        <button className='p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    </Link>
                 </div>
 
                 <div class="justify-between flex items-center border relative rounded bg-gray-300 p-3'">
                 <label className='relative rounded bg-gray-300 p-3'>{TAAResult}</label>
-                    <button className='mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    <Link to={"ThoracicAorticAneurysms"} >
+                    <button className='p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                    </Link>
                 </div>
 
                 <div class="justify-between flex items-center border relative rounded bg-gray-300 p-3'">
                 <label className='relative rounded bg-gray-300 p-3'>{AAAResult}</label>
-                    <button className='mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                <Link to={"AbdominalAorticAneurysm"} >
+                    <button className='p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>More Info</button>
+                </Link>
                 </div>
+                
+                <Link to={"/"} >
+                <button className='my-2 p-2 mr-2 font-semibold py-2 bg-emerald-500 hover:bg-emerald-400 relative rounded-lg text-white'>Home</button>
+                </Link>
             </div>
 
         </form>
