@@ -4,7 +4,7 @@ import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Sort, Page, E
 
 import { useStateContext } from '../../../contexts/ContextProvider';
 import { Header } from '../../../components'
-import { Data, Grid } from '../../../data'
+import Grid  from '../../../data/grid'
 import {commands, editSettings, sortingOptions} from '../../../Configs/table'
 
 const DatasetTable = () => {

@@ -9,7 +9,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 // components
 import {AdminNavbar, Sidebar} from "../components";
 // views
-import {UserManagement, Dataset, Dashboard, DataForm} from "../views/admin"
+import {UserManagement, Dataset, Dashboard, DataForm} from "../pages/admin"
 
 export default function Admin() {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -26,7 +26,7 @@ export default function Admin() {
   return (
     <>
     <div className=" flex relative dark:bg-main-dark-bg">
-      <div className="fixed right-4 bottom-4" style={{zIndex: '1000'}}>
+      {/* <div className="fixed right-4 bottom-4" style={{zIndex: '1000'}}>
         <TooltipComponent content="Profile Setting" position="top" offsetX={18}>
           <button type="button"
           style={{background:'blue', borderRadius:'50%'}} 
@@ -34,9 +34,7 @@ export default function Admin() {
             <FiUsers/>
           </button>
         </TooltipComponent>
-
-
-      </div>
+      </div> */}
       <div className={`${stateStyle.sidebar}
       sidebar pt-3 dark:bg-secondary-dark-bg transition-all ease-linear duration-300 delay-75`}>
         <Sidebar/>

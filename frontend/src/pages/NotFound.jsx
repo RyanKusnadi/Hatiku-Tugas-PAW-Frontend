@@ -1,5 +1,4 @@
 import logo from './logo.svg';
-import './NotFound.css';
 import { useState } from 'react';
 import background from "./background.jpg"
 

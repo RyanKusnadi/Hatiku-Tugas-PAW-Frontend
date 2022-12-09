@@ -18,7 +18,7 @@ const Sidebar = ( ) => {
   return (
     <>
       <div className=' transition-transform flex justify-between items-center'>
-        <Link to='/admin' className=' font-extrabold items-center m-3 mt-4  '>
+        <Link to='/' className=' font-extrabold items-center m-3 mt-4  '>
           <span className=''>Hatiku</span>
         </Link>
       </div>
